@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: OA
+  datasource:
+    url: jdbc:mysql://localhost:3306/oa?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 1234
+
+server:
+  port: 10001
