@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mapper namespace="com.damon.oa.model.User">
+    <resultMap id="BaseResultMap" type="com.damon.oa.model.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="enabled" property="enabled" jdbcType="BIT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="user_face" property="userFace" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="UserWithRoles" type="com.damon.oa.model.User" extends="BaseResultMap">
+        <collection property="roles" ofType="com.damon.oa.model.Role">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="name_zh" property="nameZh"/>
+        </collection>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, phone, telephone, address, enabled, username, password, user_face, remark
+    </sql>
+    <select id="loadUserByUsername" resultMap="BaseResultMap">
+        select * from user where username=#{username}
+    </select>
+
+</mapper>
