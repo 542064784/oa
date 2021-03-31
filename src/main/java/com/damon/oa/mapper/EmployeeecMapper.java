@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Employeeec;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface EmployeeecMapper extends BaseMapper<Employeeec> {
-	
+public interface EmployeeecMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Employeeec record);
+
+    Employeeec selectByPrimaryKey(Integer id);
+
+    List<Employeeec> selectAll();
+
+    int updateByPrimaryKey(Employeeec record);
 }

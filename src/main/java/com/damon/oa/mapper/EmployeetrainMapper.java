@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Employeetrain;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface EmployeetrainMapper extends BaseMapper<Employeetrain> {
-	
+public interface EmployeetrainMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Employeetrain record);
+
+    Employeetrain selectByPrimaryKey(Integer id);
+
+    List<Employeetrain> selectAll();
+
+    int updateByPrimaryKey(Employeetrain record);
 }

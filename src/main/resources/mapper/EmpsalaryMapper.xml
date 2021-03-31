@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.damon.oa.mapper.EmpsalaryMapper">
-
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.damon.oa.model.Empsalary" id="empsalaryMap">
-        <result property="id" column="id"/>
-        <result property="eid" column="eid"/>
-        <result property="sid" column="sid"/>
-    </resultMap>
-
-
+  <resultMap id="BaseResultMap" type="com.damon.oa.model.Empsalary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="eid" jdbcType="INTEGER" property="eid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from empsalary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.damon.oa.model.Empsalary">
+    insert into empsalary (id, eid, sid)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.damon.oa.model.Empsalary">
+    update empsalary
+    set eid = #{eid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, eid, sid
+    from empsalary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, eid, sid
+    from empsalary
+  </select>
 </mapper>

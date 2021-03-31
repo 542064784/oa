@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.damon.oa.mapper.OplogMapper">
-
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.damon.oa.model.Oplog" id="oplogMap">
-        <result property="id" column="id"/>
-        <result property="adddate" column="addDate"/>
-        <result property="operate" column="operate"/>
-        <result property="userid" column="userid"/>
-    </resultMap>
-
-
+  <resultMap id="BaseResultMap" type="com.damon.oa.model.Oplog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="addDate" jdbcType="DATE" property="adddate" />
+    <result column="operate" jdbcType="VARCHAR" property="operate" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oplog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.damon.oa.model.Oplog">
+    insert into oplog (id, addDate, operate, 
+      userid)
+    values (#{id,jdbcType=INTEGER}, #{adddate,jdbcType=DATE}, #{operate,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.damon.oa.model.Oplog">
+    update oplog
+    set addDate = #{adddate,jdbcType=DATE},
+      operate = #{operate,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, addDate, operate, userid
+    from oplog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, addDate, operate, userid
+    from oplog
+  </select>
 </mapper>

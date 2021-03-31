@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.damon.oa.mapper.SalaryMapper">
-
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.damon.oa.model.Salary" id="salaryMap">
-        <result property="id" column="id"/>
-        <result property="basicsalary" column="basicSalary"/>
-        <result property="bonus" column="bonus"/>
-        <result property="lunchsalary" column="lunchSalary"/>
-        <result property="trafficsalary" column="trafficSalary"/>
-        <result property="allsalary" column="allSalary"/>
-        <result property="pensionbase" column="pensionBase"/>
-        <result property="pensionper" column="pensionPer"/>
-        <result property="createdate" column="createDate"/>
-        <result property="medicalbase" column="medicalBase"/>
-        <result property="medicalper" column="medicalPer"/>
-        <result property="accumulationfundbase" column="accumulationFundBase"/>
-        <result property="accumulationfundper" column="accumulationFundPer"/>
-        <result property="name" column="name"/>
-    </resultMap>
-
-
+  <resultMap id="BaseResultMap" type="com.damon.oa.model.Salary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="basicSalary" jdbcType="INTEGER" property="basicsalary" />
+    <result column="bonus" jdbcType="INTEGER" property="bonus" />
+    <result column="lunchSalary" jdbcType="INTEGER" property="lunchsalary" />
+    <result column="trafficSalary" jdbcType="INTEGER" property="trafficsalary" />
+    <result column="allSalary" jdbcType="INTEGER" property="allsalary" />
+    <result column="pensionBase" jdbcType="INTEGER" property="pensionbase" />
+    <result column="pensionPer" jdbcType="REAL" property="pensionper" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="medicalBase" jdbcType="INTEGER" property="medicalbase" />
+    <result column="medicalPer" jdbcType="REAL" property="medicalper" />
+    <result column="accumulationFundBase" jdbcType="INTEGER" property="accumulationfundbase" />
+    <result column="accumulationFundPer" jdbcType="REAL" property="accumulationfundper" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from salary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.damon.oa.model.Salary">
+    insert into salary (id, basicSalary, bonus, 
+      lunchSalary, trafficSalary, allSalary, 
+      pensionBase, pensionPer, createDate, 
+      medicalBase, medicalPer, accumulationFundBase, 
+      accumulationFundPer, `name`)
+    values (#{id,jdbcType=INTEGER}, #{basicsalary,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER}, 
+      #{lunchsalary,jdbcType=INTEGER}, #{trafficsalary,jdbcType=INTEGER}, #{allsalary,jdbcType=INTEGER}, 
+      #{pensionbase,jdbcType=INTEGER}, #{pensionper,jdbcType=REAL}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{medicalbase,jdbcType=INTEGER}, #{medicalper,jdbcType=REAL}, #{accumulationfundbase,jdbcType=INTEGER}, 
+      #{accumulationfundper,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.damon.oa.model.Salary">
+    update salary
+    set basicSalary = #{basicsalary,jdbcType=INTEGER},
+      bonus = #{bonus,jdbcType=INTEGER},
+      lunchSalary = #{lunchsalary,jdbcType=INTEGER},
+      trafficSalary = #{trafficsalary,jdbcType=INTEGER},
+      allSalary = #{allsalary,jdbcType=INTEGER},
+      pensionBase = #{pensionbase,jdbcType=INTEGER},
+      pensionPer = #{pensionper,jdbcType=REAL},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      medicalBase = #{medicalbase,jdbcType=INTEGER},
+      medicalPer = #{medicalper,jdbcType=REAL},
+      accumulationFundBase = #{accumulationfundbase,jdbcType=INTEGER},
+      accumulationFundPer = #{accumulationfundper,jdbcType=REAL},
+      `name` = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, basicSalary, bonus, lunchSalary, trafficSalary, allSalary, pensionBase, 
+    pensionPer, createDate, medicalBase, medicalPer, accumulationFundBase, accumulationFundPer, 
+    `name`
+    from salary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, basicSalary, bonus, lunchSalary, trafficSalary, allSalary, pensionBase, 
+    pensionPer, createDate, medicalBase, medicalPer, accumulationFundBase, accumulationFundPer, 
+    `name`
+    from salary
+  </select>
 </mapper>

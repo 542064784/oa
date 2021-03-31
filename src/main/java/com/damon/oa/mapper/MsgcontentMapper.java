@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Msgcontent;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface MsgcontentMapper extends BaseMapper<Msgcontent> {
-	
+public interface MsgcontentMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Msgcontent record);
+
+    Msgcontent selectByPrimaryKey(Integer id);
+
+    List<Msgcontent> selectAll();
+
+    int updateByPrimaryKey(Msgcontent record);
 }

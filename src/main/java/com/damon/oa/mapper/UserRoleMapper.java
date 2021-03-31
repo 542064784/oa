@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.UserRole;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface UserRoleMapper extends BaseMapper<UserRole> {
-	
+public interface UserRoleMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(UserRole record);
+
+    UserRole selectByPrimaryKey(Integer id);
+
+    List<UserRole> selectAll();
+
+    int updateByPrimaryKey(UserRole record);
 }

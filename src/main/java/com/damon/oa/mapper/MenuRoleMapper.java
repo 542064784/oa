@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.MenuRole;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:00
- */
-@Mapper
-public interface MenuRoleMapper extends BaseMapper<MenuRole> {
-	
+public interface MenuRoleMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(MenuRole record);
+
+    MenuRole selectByPrimaryKey(Integer id);
+
+    List<MenuRole> selectAll();
+
+    int updateByPrimaryKey(MenuRole record);
 }

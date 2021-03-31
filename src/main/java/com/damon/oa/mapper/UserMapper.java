@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.User;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface UserMapper extends BaseMapper<User> {
-	
+public interface UserMapper {
+    int deleteByPrimaryKey(String user);
+
+    int insert(User record);
+
+    User selectByPrimaryKey(String user);
+
+    List<User> selectAll();
+
+    int updateByPrimaryKey(User record);
 }

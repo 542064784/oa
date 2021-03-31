@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Adjustsalary;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface AdjustsalaryMapper extends BaseMapper<Adjustsalary> {
-	
+public interface AdjustsalaryMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Adjustsalary record);
+
+    Adjustsalary selectByPrimaryKey(Integer id);
+
+    List<Adjustsalary> selectAll();
+
+    int updateByPrimaryKey(Adjustsalary record);
 }

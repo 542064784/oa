@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Sysmsg;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:00
- */
-@Mapper
-public interface SysmsgMapper extends BaseMapper<Sysmsg> {
-	
+public interface SysmsgMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Sysmsg record);
+
+    Sysmsg selectByPrimaryKey(Integer id);
+
+    List<Sysmsg> selectAll();
+
+    int updateByPrimaryKey(Sysmsg record);
 }

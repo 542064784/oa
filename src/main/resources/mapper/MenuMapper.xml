@@ -1,21 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.damon.oa.mapper.MenuMapper">
-
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.damon.oa.model.Menu" id="menuMap">
-        <result property="id" column="id"/>
-        <result property="url" column="url"/>
-        <result property="path" column="path"/>
-        <result property="component" column="component"/>
-        <result property="name" column="name"/>
-        <result property="iconcls" column="iconCls"/>
-        <result property="keepalive" column="keepAlive"/>
-        <result property="requireauth" column="requireAuth"/>
-        <result property="parentid" column="parentId"/>
-        <result property="enabled" column="enabled"/>
-    </resultMap>
-
-
+  <resultMap id="BaseResultMap" type="com.damon.oa.model.Menu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="component" jdbcType="VARCHAR" property="component" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="iconCls" jdbcType="VARCHAR" property="iconcls" />
+    <result column="keepAlive" jdbcType="BIT" property="keepalive" />
+    <result column="requireAuth" jdbcType="BIT" property="requireauth" />
+    <result column="parentId" jdbcType="INTEGER" property="parentid" />
+    <result column="enabled" jdbcType="BIT" property="enabled" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.damon.oa.model.Menu">
+    insert into menu (id, url, `path`, 
+      component, `name`, iconCls, 
+      keepAlive, requireAuth, parentId, 
+      enabled)
+    values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{component,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, 
+      #{keepalive,jdbcType=BIT}, #{requireauth,jdbcType=BIT}, #{parentid,jdbcType=INTEGER}, 
+      #{enabled,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.damon.oa.model.Menu">
+    update menu
+    set url = #{url,jdbcType=VARCHAR},
+      `path` = #{path,jdbcType=VARCHAR},
+      component = #{component,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      iconCls = #{iconcls,jdbcType=VARCHAR},
+      keepAlive = #{keepalive,jdbcType=BIT},
+      requireAuth = #{requireauth,jdbcType=BIT},
+      parentId = #{parentid,jdbcType=INTEGER},
+      enabled = #{enabled,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, url, `path`, component, `name`, iconCls, keepAlive, requireAuth, parentId, 
+    enabled
+    from menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, url, `path`, component, `name`, iconCls, keepAlive, requireAuth, parentId, 
+    enabled
+    from menu
+  </select>
 </mapper>

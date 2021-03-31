@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.damon.oa.mapper.SysmsgMapper">
-
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.damon.oa.model.Sysmsg" id="sysmsgMap">
-        <result property="id" column="id"/>
-        <result property="mid" column="mid"/>
-        <result property="type" column="type"/>
-        <result property="userid" column="userid"/>
-        <result property="state" column="state"/>
-    </resultMap>
-
-
+  <resultMap id="BaseResultMap" type="com.damon.oa.model.Sysmsg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sysmsg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.damon.oa.model.Sysmsg">
+    insert into sysmsg (id, mid, `type`, 
+      userid, `state`)
+    values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.damon.oa.model.Sysmsg">
+    update sysmsg
+    set mid = #{mid,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, mid, `type`, userid, `state`
+    from sysmsg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, mid, `type`, userid, `state`
+    from sysmsg
+  </select>
 </mapper>

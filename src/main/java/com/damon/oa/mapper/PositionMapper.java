@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Position;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:00
- */
-@Mapper
-public interface PositionMapper extends BaseMapper<Position> {
-	
+public interface PositionMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Position record);
+
+    Position selectByPrimaryKey(Integer id);
+
+    List<Position> selectAll();
+
+    int updateByPrimaryKey(Position record);
 }

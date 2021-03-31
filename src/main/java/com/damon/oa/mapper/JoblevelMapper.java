@@ -1,17 +1,16 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.Joblevel;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:00
- */
-@Mapper
-public interface JoblevelMapper extends BaseMapper<Joblevel> {
-	
+public interface JoblevelMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Joblevel record);
+
+    Joblevel selectByPrimaryKey(Integer id);
+
+    List<Joblevel> selectAll();
+
+    int updateByPrimaryKey(Joblevel record);
 }

@@ -1,17 +1,10 @@
 package com.damon.oa.mapper;
 
 import com.damon.oa.model.MailSendLog;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 
-/**
- * 
- * 
- * @author Damon Chen
- * @email 542064784@qq.com
- * @date 2021-03-31 11:37:01
- */
-@Mapper
-public interface MailSendLogMapper extends BaseMapper<MailSendLog> {
-	
+public interface MailSendLogMapper {
+    int insert(MailSendLog record);
+
+    List<MailSendLog> selectAll();
 }

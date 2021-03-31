@@ -2,7 +2,7 @@ spring:
   application:
     name: OA
   datasource:
-    url: jdbc:mysql://localhost:3306/oa?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/oa?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
@@ -10,5 +10,7 @@ spring:
 
 server:
   port: 10001
-  servlet:
-    context-path: /mapper
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.damon.oa.model
