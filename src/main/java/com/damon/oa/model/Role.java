@@ -1,30 +1,35 @@
 package com.damon.oa.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- *  角色表
- *
+ * 
+ * 
  * @author Damon Chen
- * @date 2021/03/09
+ * @email 542064784@qq.com
+ * @date 2021-03-31 11:37:00
  */
 @Data
+@TableName("role")
 public class Role implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 2L;
-    /**
-     *   主键
-     */
-    private Integer id;
-    /**
-     *  英文名称
-     */
-    private String name;
-    /**
-     *  中文名称
-     */
-    private String nameZh;
+	/**
+	 * 
+	 */
+	@TableId
+	private Integer id;
+	/**
+	 * 
+	 */
+	private String name;
+	/**
+	 * 角色名称
+	 */
+	private String namezh;
 
 }

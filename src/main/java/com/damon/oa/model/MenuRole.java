@@ -1,30 +1,35 @@
 package com.damon.oa.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- *  资源 角色 关联表
- *
+ * 
+ * 
  * @author Damon Chen
- * @date 2021/03/09
+ * @email 542064784@qq.com
+ * @date 2021-03-31 11:37:00
  */
 @Data
+@TableName("menu_role")
 public class MenuRole implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 4L;
-    /**
-     *  主键
-     */
-    private Integer id;
-    /**
-     *  资源表主键
-     */
-    private Integer menuId;
-    /**
-     *  角色表主键
-     */
-    private Integer roleId;
+	/**
+	 * 
+	 */
+	@TableId
+	private Integer id;
+	/**
+	 * 
+	 */
+	private Integer mid;
+	/**
+	 * 
+	 */
+	private Integer rid;
 
 }

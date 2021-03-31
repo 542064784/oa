@@ -1,121 +1,63 @@
 package com.damon.oa.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.io.Serializable;
 
 /**
- *  用户表
- *
+ * 
+ * 
  * @author Damon Chen
- * @date 2021/03/09
+ * @email 542064784@qq.com
+ * @date 2021-03-31 11:37:01
  */
 @Data
-public class User implements UserDetails {
+@TableName("user")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    /**
-     *  主键
-     */
-    private Integer id;
-    /**
-     *  名称
-     */
-    private String name;
-    /**
-     *  电话
-     */
-    private String phone;
-    /**
-     *  移动电话
-     */
-    private String telephone;
-    /**
-     *  地址
-     */
-    private String address;
-    /**
-     *  是否启用
-     */
-    private Boolean enabled;
-    /**
-     *  用户名
-     */
-    private String username;
-    /**
-     *  密码
-     */
-    private String password;
-    /**
-     *  用户界面
-     */
-    private String userFace;
-    /**
-     *  备注
-     */
-    private String remark;
-    /**
-     *  角色集合
-     */
-    private List<Role> roles;
+	/**
+	 * userID
+	 */
+	@TableId
+	private Integer id;
+	/**
+	 * 姓名
+	 */
+	private String name;
+	/**
+	 * 手机号码
+	 */
+	private String phone;
+	/**
+	 * 住宅电话
+	 */
+	private String telephone;
+	/**
+	 * 联系地址
+	 */
+	private String address;
+	/**
+	 * 
+	 */
+	private Integer enabled;
+	/**
+	 * 用户名
+	 */
+	private String username;
+	/**
+	 * 密码
+	 */
+	private String password;
+	/**
+	 * 
+	 */
+	private String userface;
+	/**
+	 * 
+	 */
+	private String remark;
 
-    /**
-     *  获得所有权限
-     *
-     * @return  GrantedAuthority collection
-     */
-    @Override
-    @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
-        for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-        return authorities;
-    }
-
-    /**
-     *  账户是否未过期
-     *
-     * @return  true
-     */
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    /**
-     *  账户是否未锁定
-     *
-     * @return  true
-     */
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    /**
-     *  凭证是否未过期
-     *
-     * @return  true
-     */
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    /**
-     *  是否启用
-     *
-     * @return   enabled
-     */
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
 }

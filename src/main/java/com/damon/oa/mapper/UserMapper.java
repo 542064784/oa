@@ -1,30 +1,17 @@
 package com.damon.oa.mapper;
 
-import com.damon.oa.model.Role;
 import com.damon.oa.model.User;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
-
 /**
- *  user mapper
- *
+ * 
+ * 
  * @author Damon Chen
- * @date 2021/03/10
+ * @email 542064784@qq.com
+ * @date 2021-03-31 11:37:01
  */
 @Mapper
-public interface UserMapper {
-
-    /**
-     *  根据username 获得user对象
-     *
-     * @param username   username
-     * @return           user
-     */
-    User loadUserByUsername(final String username);
-
-    List<Role> getUserRolesById(final Integer id);
-
-
-
+public interface UserMapper extends BaseMapper<User> {
+	
 }

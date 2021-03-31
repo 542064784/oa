@@ -1,34 +1,20 @@
 package com.damon.oa.service;
 
-import com.damon.oa.mapper.UserMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.damon.oa.util.PageUtils;
 import com.damon.oa.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Transient;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Map;
 
 /**
- *  用户service
+ * 
  *
  * @author Damon Chen
- * @date 2021/03/10
+ * @email 542064784@qq.com
+ * @date 2021-03-31 11:37:01
  */
-@Component
-@Transactional
-public class UserService implements UserDetailsService {
+public interface UserService extends IService<User> {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        final User user = userMapper.loadUserByUsername(username);
-        if (null == user) {
-            throw new UsernameNotFoundException("未找到用户.");
-        }
-        return user;
-    }
+    PageUtils queryPage(Map<String, Object> params);
 }
+

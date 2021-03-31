@@ -1,64 +1,63 @@
 package com.damon.oa.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- *  资源表
- *
+ * 
+ * 
  * @author Damon Chen
- * @date 2021/03/09
+ * @email 542064784@qq.com
+ * @date 2021-03-31 11:37:00
  */
 @Data
+@TableName("menu")
 public class Menu implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;
-    /**
-     *  主键
-     */
-    private Integer id;
-    /**
-     *  路径匹配规则
-     */
-    private String url;
-    /**
-     *  有权限的path
-     */
-    private String path;
-    /**
-     *  组件
-     */
-    private String component;
-    /**
-     *  名称
-     */
-    private String name;
-    /**
-     *  图标
-     */
-    private String iconCls;
-    /**
-     *  是否使用
-     */
-    private String keepAlive;
-    /**
-     *  要求权限
-     */
-    private String requireAuth;
-    /**
-     *  父Id
-     */
-    private String parentId;
-    /**
-     *  子资源集合
-     */
-    private List<Menu> children;
-    /**
-     *  角色集合
-     */
-    private List<Role> roles;
-
+	/**
+	 * 
+	 */
+	@TableId
+	private Integer id;
+	/**
+	 * 
+	 */
+	private String url;
+	/**
+	 * 
+	 */
+	private String path;
+	/**
+	 * 
+	 */
+	private String component;
+	/**
+	 * 
+	 */
+	private String name;
+	/**
+	 * 
+	 */
+	private String iconcls;
+	/**
+	 * 
+	 */
+	private Integer keepalive;
+	/**
+	 * 
+	 */
+	private Integer requireauth;
+	/**
+	 * 
+	 */
+	private Integer parentid;
+	/**
+	 * 
+	 */
+	private Integer enabled;
 
 }
