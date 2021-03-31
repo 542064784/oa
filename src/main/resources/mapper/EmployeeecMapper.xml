@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.damon.oa.mapper.EmployeeecMapper">
+  <resultMap id="BaseResultMap" type="com.damon.oa.model.Employeeec">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="eid" jdbcType="INTEGER" property="eid" />
+    <result column="ecDate" jdbcType="DATE" property="ecdate" />
+    <result column="ecReason" jdbcType="VARCHAR" property="ecreason" />
+    <result column="ecPoint" jdbcType="INTEGER" property="ecpoint" />
+    <result column="ecType" jdbcType="INTEGER" property="ectype" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employeeec
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.damon.oa.model.Employeeec">
+    insert into employeeec (id, eid, ecDate, 
+      ecReason, ecPoint, ecType, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{ecdate,jdbcType=DATE}, 
+      #{ecreason,jdbcType=VARCHAR}, #{ecpoint,jdbcType=INTEGER}, #{ectype,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.damon.oa.model.Employeeec">
+    update employeeec
+    set eid = #{eid,jdbcType=INTEGER},
+      ecDate = #{ecdate,jdbcType=DATE},
+      ecReason = #{ecreason,jdbcType=VARCHAR},
+      ecPoint = #{ecpoint,jdbcType=INTEGER},
+      ecType = #{ectype,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, eid, ecDate, ecReason, ecPoint, ecType, remark
+    from employeeec
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, eid, ecDate, ecReason, ecPoint, ecType, remark
+    from employeeec
+  </select>
+</mapper>
